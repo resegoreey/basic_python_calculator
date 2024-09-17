@@ -1,2 +1,2 @@
-# raffikisweb
-# raffikis-profile
+# Basic calculator
+# used functions for each operator
