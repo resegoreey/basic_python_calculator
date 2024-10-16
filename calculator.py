@@ -1,66 +1,60 @@
-#function for addition
+# Function for addition
 def add(num1, num2):
-  return num1 + num2
+    return num1 + num2
 
-#function for subtraction 
+# Function for subtraction 
 def subtr(num1, num2):
-  return num1 - num2
+    return num1 - num2
 
-#function for multiplication 
+# Function for multiplication 
 def multiply(num1, num2):
-  return num1 * num2
+    return num1 * num2
 
-#function for division 
+# Function for division 
 def divide(num1, num2):
-  if num2 != 0:
-    return num1 / num2
-  else:
-    print("You cannot divide by zero!")
-
+    if num2 != 0:
+        return num1 / num2
+    else:
+        print("You cannot divide by zero!")
 
 def calculator():
+    while True:
+        try:
+            # Prompt the user for input 
+            user_input = input("Choose the operation you want to use (+, -, *, /): ")
+            num1 = float(input("First number?: "))
+            num2 = float(input("Second number?: "))
 
-  while True:
+            # Perform the calculations based on the operator 
+            if user_input == "+":
+                result = add(num1, num2)
+                print(f"Result: {round(result, 1)}")
 
-   try:
-    #prompt the user for input 
-    user_input = input("Choose the operation you want to use (+. -, *, /): ")
-    num1 = float(input("first number?: "))
-    num2 = float(input("second number?: "))
+            elif user_input == "-":
+                result = subtr(num1, num2)
+                print(f"Result: {round(result, 1)}")
 
-  #perform the calculations based on the operator 
-    if user_input == "+":
-        result = add(num1, num2)
-        print(f"results: {round(result, 1)}")
+            elif user_input == "*":
+                result = multiply(num1, num2)
+                print(f"Result: {round(result, 1)}")
 
-    elif user_input == "-":
-        result = subtr(num1, num2)
-        print(f"results: {round(result, 1)}")
+            elif user_input == "/":
+                result = divide(num1, num2)
+                if result is not None:  # Ensure there's no division by zero
+                    print(f"Result: {round(result, 1)}")
+            else:
+                # Invalid operator 
+                raise ValueError(f"{user_input} is an invalid option!")
+        except ValueError as ve:
+            print(f"Input error: {ve}") 
+        except ZeroDivisionError as zde:
+            print(f"Math Error: {zde}")
 
-    elif user_input == "*":
-        result = multiply(num1, num2)
-        print(f"results: {round(result, 1)}")
+        # Asking the user if they want to continue or exit
+        user_decision = input("Do you want to continue with your calculations? (yes/no): ").lower()
+        if user_decision != "yes":
+            print("Exiting the calculator, Bye bye!")
+            break
 
-    elif user_input == "/":
-    #handle division by zero 
-      If num2 == 0
-        raise ZeroDivisionError("Cannot divide by zero")
-      result = divide(num1, num2)
-      print(f"results: {result }")
-    else:
-      #Invalid operator 
-        raise ValueError(f"{user_input} is a/n Invalid Option!")
-   except ValueError as ve:
-     print(f"Input error: {ve}") 
-   except ZeroDivisionError as zde:
-     print(f"Math Error: {zde}")
-
-#asking the user if they want to continue or exit
-
-    user_decision = input("Do you want to continue with your calculations? ").lower()
-    if user_decision != "yes":
-      print("Exiting the calculator, Bye bye!")
-      break
-    
-#running the calculator 
-calculator()
+# Running the calculator 
+#calculator()
